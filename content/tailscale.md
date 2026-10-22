@@ -2,6 +2,8 @@
 title: Tailscale
 tags:
   - tools/networking
+  - explanation/pareto
+  - explanation/asd-ste100
   - explanation/analogy
   - explanation/first-principles
   - explanation/contrast
