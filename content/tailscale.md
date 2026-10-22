@@ -2,14 +2,17 @@
 title: Tailscale
 tags:
   - tools/networking
-  - explanation/pareto
-  - explanation/asd-ste100
-  - explanation/analogy
-  - explanation/first-principles
-  - explanation/contrast
 ---
 
 # Tailscale
+
+```text
+- Tailscale joins your devices into one private network called a tailnet.
+- It uses WireGuard to encrypt traffic end to end.
+- A coordination server shares keys and access rules, not the traffic itself.
+- Devices connect directly when they can; DERP relays only forward encrypted packets.
+- It is not an anonymity VPN.
+```
 
 Tailscale is a **mesh VPN** built on WireGuard. It makes devices in different places behave as if they were on the same private LAN, without port forwarding or a central VPN gateway. The private network you create is called a **tailnet**.
 
@@ -79,10 +82,6 @@ Install the app on phones and laptops, sign in with the same account, and they j
 ## Background
 
 Tailscale Inc. was founded in 2019 by Avery Pennarun, David Crawshaw, David Carney, and Brad Fitzpatrick, and is based in Toronto. The name comes from the paper "The Tail at Scale". The company raised a $160M Series C in 2025.
-
-## The gist
-
-Tailscale is a private mesh network for your devices. A small coordination service handles identity and key exchange; the actual traffic goes device-to-device over WireGuard, encrypted end to end. It feels like plugging everything into one LAN, without running a VPN server.
 
 ## Sources
 

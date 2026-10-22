@@ -16,7 +16,7 @@ A **lens** is a model or framework used to explain a topic. **Two lenses are man
 | **Feynman technique**                         | Explain in plain language as if teaching a beginner; gaps in the explanation reveal what to relearn.                                                                                                                                                                                                     | Checking understanding or building intuition.                        |
 | **Worked example**                            | Show one concrete case solved step by step.                                                                                                                                                                                                                                                              | Rules feel abstract and the reader needs to see them applied.        |
 | **Progressive disclosure**                    | Start with the minimum needed, then add detail in layers.                                                                                                                                                                                                                                                | The topic is too large to absorb at once.                            |
-| **Contrast**                                  | Compare the idea with a close neighbour                                                                                                                                                                                                                                             | Two concepts are easily confused.                                    |
+| **Contrast**                                  | Compare the idea with a close neighbour                                                                                                                                                                                                                                                                  | Two concepts are easily confused.                                    |
 
 Pareto and ASD-STE100 always apply. This table is illustrative, not exhaustive. If another lens fits better — systems thinking, 5 Whys, diagrams, storytelling, decision tables, or any other model not listed here — use it. Do not limit yourself to this table: pick whichever lens is best for the topic, even if it is not listed, and combine lenses when useful. Keep this table short: add a row only for a lens that is used repeatedly.
 
@@ -40,11 +40,14 @@ Pareto and ASD-STE100 always apply. This table is illustrative, not exhaustive. 
 - Do not force an optional lens. The two baseline lenses always apply, but a plain explanation is better than a stretched analogy.
 - **Do not assume anything.** Search the web for factual information — facts, numbers, dates, quotes, and current information — before writing it. Do not rely on memory. If a claim cannot be verified, say so or omit it.
 - Separate fact from analogy or opinion, and flag uncertainty.
-- End a complex explanation with a brief "the gist" summary.
+
+### Pareto summary
+
+Start every content note with a fenced code block. Inside it, write 3–6 short bullet points that give the vital 20%: the core ideas, facts, names, and distinctions a reader must remember. Keep it conceptual; procedures and configuration details belong in the body. Avoid vague lines that could describe any note or merely restate the title. A reader should be able to recall the concept from the block alone. Do not use it for a full outline.
 
 ## Wiki organization rules
 
-Content lives in `content/`. The site is built with Quartz; run `npx quartz build --serve` to preview (`npm run docs` builds the bundled help docs, not this wiki).
+Content lives in `content/`. The site is built with Quartz; run `npm run serve` (or `npx quartz build --serve`) to preview (`npm run docs` builds the bundled help docs, not this wiki). Use `--serve` for local preview; do not serve `public/` directly at the server root. The production `baseUrl` includes `/wiki`, so a non-serve build links to `/wiki/...` and those links return 404 locally.
 
 Structure emerges just-in-time from what is actually written. There is no predefined taxonomy and no empty folders; folders are created only when notes earn them.
 
@@ -59,27 +62,19 @@ Structure emerges just-in-time from what is actually written. There is no predef
 
 ### Tags as a staging area
 
-Tags are lowercase kebab-case under a namespace, such as `tools/version-control`, `systems/linux`, or `explanation/analogy`. They encode a tentative category without committing to a folder, and Quartz renders a page for every tag.
+Tags are lowercase kebab-case under a namespace, such as `tools/version-control` or `systems/linux`. They encode a tentative category without committing to a folder, and Quartz renders a page for every tag.
 
 A tag is a staging area, not a second folder system. Three notes that clearly belong together become a folder now. A tag that keeps appearing across 5–7 otherwise unrelated notes is a signal to consider a folder — but only if it names a stable category. Cross-cutting tags stay tags.
 
-### Explanation model tags
-
-Every content note must include these two baseline tags. Home, folder, and tag index pages are exempt:
-
-- `explanation/pareto`
-- `explanation/asd-ste100`
-
-Add any extra lenses that fit the note. Tag them as `explanation/<model-name>` — for example `explanation/analogy` or `explanation/first-principles`. This is not a whitelist: a new lens needs only its tag, not an entry in this file. These tags create tag pages, so notes can be browsed by explanation style, and the tag set can grow while `AGENTS.md` stays stable.
-
 ### Creating a note
 
-1. Apply Pareto to choose the vital few ideas. Apply ASD-STE100 to the prose.
-2. Add frontmatter with `title`, one category tag, `explanation/pareto`, `explanation/asd-ste100`, and any extra lenses used.
-3. Put the note at the `content/` root; link it from `index.md` or a related note.
-4. Check the result. With `npx quartz build --serve` running, the page rebuilds on save. Run a full `npx quartz build` after a move, rename, new folder, or before publishing.
+1. Apply Pareto to choose the vital few ideas. Start the note with a fenced code block of bullet points that gives the vital 20%.
+2. Apply ASD-STE100 to the prose.
+3. Add frontmatter with `title` and one category tag.
+4. Put the note at the `content/` root; link it from `index.md` or a related note.
+5. Check the result. With `npx quartz build --serve` running, the page rebuilds on save. Run a full `npx quartz build` after a move, rename, new folder, or before publishing.
 
-Do not leave a content note without the two baseline tags. If you use an extra lens, tag it too.
+Every content note starts with the Pareto summary block. Home, folder, and tag index pages are exempt.
 
 ### Mechanics
 
